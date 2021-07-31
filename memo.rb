@@ -9,10 +9,12 @@ if memo_type == "1"
     puts "メモしたい内容を記入してください"
     puts "完了したらCtrl + Dを押します"
     
-    CSV.open("#{file_name}.csv",'w'){|memo|
-        memo_type = memo.readlines
-    }
-    memo << ["#{memo_type}"]
+    memo_type = STDIN.read
+    
+    CSV.open("#{file_name}.csv",'w') do |memo|
+        memo << ["#{memo_type}"]
+    end
+    
     
 elsif memo_type == "2"
     puts "編集したいファイル名を入力してください"
@@ -21,9 +23,10 @@ elsif memo_type == "2"
     puts "編集内容を記入してください"
     puts "完了したらCtrl + Dを押します"
     
-    CSV.open("#{file_name}.csv",'a'){|memo|
-         memo_type = memo.readlines
-    }
-    memo << ["#{memo_type}"]
+    memo_type = STDIN.read
+    
+    CSV.open("#{file_name}.csv",'a') do |memo|
+        memo << ["#{memo_type}"]
+    end
 end
 
